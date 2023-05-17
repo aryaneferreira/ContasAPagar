@@ -1,3 +1,4 @@
+using ContasAPagar.Model;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ContasAPagar.Controllers
