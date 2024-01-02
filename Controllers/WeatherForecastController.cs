@@ -1,3 +1,5 @@
+using ContasAPagar.Model;
+using ContasAPagar.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ContasAPagar.Controllers
@@ -6,28 +8,25 @@ namespace ContasAPagar.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
-
         private readonly ILogger<WeatherForecastController> _logger;
+        private IWeatherForecastService _weatherForecastService;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, IWeatherForecastService weatherForecastService)
         {
             _logger = logger;
+            _weatherForecastService = weatherForecastService;
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        [HttpGet(Name = "GetWeatherForecasts")]
+        public IEnumerable<WeatherForecast> GetWeatherForecasts()
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+            return _weatherForecastService.GetWeatherForecasts();
+        }
+
+        [HttpPost(Name = "PostWeatherForecast")]
+        public void PostWeatherForecast(WeatherForecast weather)
+        {
+            _weatherForecastService.PostWeatherForecast(weather);
         }
     }
 }
