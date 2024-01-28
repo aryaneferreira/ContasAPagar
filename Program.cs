@@ -18,6 +18,8 @@ builder.Services.AddDbContext<ContasAPagarContext>(options =>
 
 builder.Services.AddScoped<IWeatherForecastService, WeatherForecastService>();
 builder.Services.AddScoped<IWeatherForecastRepository, WeatherForecastRepository>();
+builder.Services.AddScoped<ITipoTransacaoRepository, TipoTransacaoRepository>();
+builder.Services.AddScoped<ITipoTransacaoService, TipoTransacaoService>();
 
 var app = builder.Build();
 

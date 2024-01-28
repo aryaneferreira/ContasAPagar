@@ -5,7 +5,7 @@ namespace ContasAPagar.Models
 
     public class TipoTransacao
     {
-        public int Id { get; set; }
+        public int TipoTransacaoId { get; set; }
         public string Nome { get; set; }
     }
 }
