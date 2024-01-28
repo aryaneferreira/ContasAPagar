@@ -1,3 +1,4 @@
+using ContasAPagar.Dto;
 using ContasAPagar.Model;
 using ContasAPagar.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -24,7 +25,7 @@ namespace ContasAPagar.Controllers
         }
 
         [HttpPost(Name = "PostWeatherForecast")]
-        public void PostWeatherForecast(WeatherForecast weather)
+        public void PostWeatherForecast(WeatherForecastInputModel weather)
         {
             _weatherForecastService.PostWeatherForecast(weather);
         }

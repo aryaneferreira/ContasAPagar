@@ -1,4 +1,4 @@
-﻿using ContasAPagar.DTOs;
+﻿using ContasAPagar.Dto;
 using ContasAPagar.Model;
 
 namespace ContasAPagar.Repositories
@@ -7,6 +7,6 @@ namespace ContasAPagar.Repositories
     {
         IEnumerable<WeatherForecast> GetWeatherForecasts();
 
-        void PostWeatherForecast(WeatherForecast weather);
+        void PostWeatherForecast(WeatherForecastInputModel weather);
     }
 }

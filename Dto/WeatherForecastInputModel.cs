@@ -1,8 +1,7 @@
-namespace ContasAPagar.Model
+﻿namespace ContasAPagar.Dto
 {
-    public class WeatherForecast
+    public class WeatherForecastInputModel
     {
-        public int WeatherForecastId { get; set; }
         public DateTime WeatherForecastDate { get; set; }
 
         public int TemperatureC { get; set; }

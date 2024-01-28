@@ -1,4 +1,4 @@
-﻿using ContasAPagar.DTOs;
+﻿using ContasAPagar.Dto;
 using ContasAPagar.Model;
 using ContasAPagar.Repositories;
 
@@ -17,15 +17,9 @@ namespace ContasAPagar.Services
             return _weatherForecastRepository.GetWeatherForecasts();
         }
 
-        public void PostWeatherForecast(WeatherForecast weather)
+        public void PostWeatherForecast(WeatherForecastInputModel weather)
         {
-            //WeatherForecast we = new WeatherForecast()
-            //{
-            //    Date = weatherDTO.Date,
-            //    TemperatureC = weatherDTO.TemperatureC,
-            //    TemperatureF = 32 + (int)(weatherDTO.TemperatureC / 0.5556),
-            //    Summary = weatherDTO.Summary
-            //};
+            
             _weatherForecastRepository.PostWeatherForecast(weather);
         }
     }
