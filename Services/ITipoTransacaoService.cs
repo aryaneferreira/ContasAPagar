@@ -1,9 +1,9 @@
-﻿using ContasAPagar.Models;
+﻿using ContasAPagar.Dto;
 
 namespace ContasAPagar.Services
 {
     public interface ITipoTransacaoService
     {
-        IEnumerable<TipoTransacao> ObtemTiposTransacao();
+        IEnumerable<TipoTransacaoOutputModel> ObtemTiposTransacao();
     }
 }

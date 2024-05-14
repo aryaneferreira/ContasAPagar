@@ -1,4 +1,4 @@
-﻿using ContasAPagar.Models;
+﻿using ContasAPagar.Dto;
 using ContasAPagar.Repositories;
 
 namespace ContasAPagar.Services
@@ -11,7 +11,7 @@ namespace ContasAPagar.Services
         {
             _tipoTransacaoRepository = repository;
         }
-        public IEnumerable<TipoTransacao> ObtemTiposTransacao()
+        public IEnumerable<TipoTransacaoOutputModel> ObtemTiposTransacao()
         {
             return this._tipoTransacaoRepository.ObtemTiposTransacao();
         }

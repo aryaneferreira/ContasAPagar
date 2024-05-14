@@ -1,5 +1,5 @@
 ﻿using ContasAPagar.Db;
-using ContasAPagar.Model;
+using ContasAPagar.Dto;
 using ContasAPagar.Models;
 
 namespace ContasAPagar.Repositories
@@ -12,10 +12,11 @@ namespace ContasAPagar.Repositories
         {
             _context = context;
         }
-        public IEnumerable<TipoTransacao> ObtemTiposTransacao()
+        public IEnumerable<TipoTransacaoOutputModel> ObtemTiposTransacao()
         {
-            var resultado = new List<TipoTransacao>();
-            resultado = _context.TiposTransacao.ToList();
+            var resultado = new List<TipoTransacaoOutputModel>();
+            var tiposTransacao = _context.TiposTransacao.ToList();
+            resultado = tiposTransacao.Select(a => new TipoTransacaoOutputModel { Nome = a.Nome, TipoTransacaoId = a.TipoTransacaoId}).ToList();
 
             return resultado;
         }

@@ -1,5 +1,4 @@
-﻿using ContasAPagar.Model;
-using ContasAPagar.Models;
+﻿using ContasAPagar.Dto;
 using ContasAPagar.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,8 +14,10 @@ namespace ContasAPagar.Controllers
         {
             _tipoTransacaoService = tipoTransacaoService;
         }
-        [HttpGet(Name = "ObtemTipoTransacao")]
-        public IEnumerable<TipoTransacao> ObtemTiposTransacao()
+
+        [HttpGet]
+        [Route("listar")]
+        public IEnumerable<TipoTransacaoOutputModel> ObtemTiposTransacao()
         {
             return _tipoTransacaoService.ObtemTiposTransacao();
         }
