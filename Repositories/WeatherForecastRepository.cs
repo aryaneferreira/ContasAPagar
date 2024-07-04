@@ -1,7 +1,6 @@
 ﻿using ContasAPagar.Db;
 using ContasAPagar.Dto;
 using ContasAPagar.Model;
-using Microsoft.Data.SqlClient;
 
 namespace ContasAPagar.Repositories
 {

@@ -1,12 +1,13 @@
 ﻿using ContasAPagar.Dto;
 using ContasAPagar.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ContasAPagar.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
-    public class TransacaoController : Controller
+    [Route("api/[controller]")]
+    public class TransacaoController : ControllerBase
     {
         private ITransacaoService _transacaoService;
 
@@ -14,7 +15,8 @@ namespace ContasAPagar.Controllers
         {
             _transacaoService = transacaoService;
         }
-
+        // posteriormente precisa estar com [Authorize]
+        [AllowAnonymous]
         [HttpGet]
         [Route("listar")]
         public IEnumerable<TransacaoOutputModel> ObtemTiposTransacao()

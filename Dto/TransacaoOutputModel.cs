@@ -9,5 +9,6 @@ namespace ContasAPagar.Dto
         public decimal Valor { get; set; }
         public DateTime DataTransacao { get; set; }
         public int TipoTransacaoId { get; set; }
+        public int CartaoId { get; set; }
     }
 }

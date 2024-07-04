@@ -1,5 +1,6 @@
 ﻿using ContasAPagar.Db;
 using ContasAPagar.Dto;
+using ContasAPagar.Repositories;
 
 namespace ContasAPagar.Repositories
 {
@@ -16,7 +17,7 @@ namespace ContasAPagar.Repositories
             var tiposTransacao = _context.Transacoes.ToList();
             resultado = tiposTransacao.Select(a => new TransacaoOutputModel { TransacaoId = a.TransacaoId, Descricao = a.Descricao, 
                                                                               DataTransacao = a.DataTransacao, TipoTransacaoId = a.TipoTransacaoId,
-                                                                              Valor = a.Valor }).ToList();
+                                                                              Valor = a.Valor, CartaoId = a.CartaoId }).OrderByDescending(x => x.DataTransacao).ToList();
             return resultado;
         }
     }

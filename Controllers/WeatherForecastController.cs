@@ -1,12 +1,13 @@
 using ContasAPagar.Dto;
 using ContasAPagar.Model;
 using ContasAPagar.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ContasAPagar.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class WeatherForecastController : ControllerBase
     {
         private readonly ILogger<WeatherForecastController> _logger;
@@ -18,12 +19,14 @@ namespace ContasAPagar.Controllers
             _weatherForecastService = weatherForecastService;
         }
 
+        [AllowAnonymous]
         [HttpGet(Name = "GetWeatherForecasts")]
         public IEnumerable<WeatherForecast> GetWeatherForecasts()
         {
             return _weatherForecastService.GetWeatherForecasts();
         }
 
+        [AllowAnonymous]
         [HttpPost(Name = "PostWeatherForecast")]
         public void PostWeatherForecast(WeatherForecastInputModel weather)
         {

@@ -9,6 +9,7 @@ namespace ContasAPagar.Db
         public DbSet<WeatherForecast> WeatherForecasts { get; set;}
         public DbSet<TipoTransacao> TiposTransacao { get; set; }
         public DbSet<Transacao> Transacoes { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
         public ContasAPagarContext(DbContextOptions<ContasAPagarContext> options) : base(options) { }
     }
 }
