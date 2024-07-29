@@ -1,4 +1,7 @@
 ﻿using ContasAPagar.Dto;
+using ContasAPagar.Repositories;
+using ContasAPagar.Services;
+using ContasAPagar.Utils.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -14,9 +17,12 @@ namespace ContasAPagar.Controllers
     {
         IConfiguration configuration;
 
-        public AuthController(IConfiguration configuration)
+        private IUsuarioService usuarioService;
+
+        public AuthController(IConfiguration configuration, IUsuarioService usuarioService)
         {
             this.configuration = configuration;
+            this.usuarioService = usuarioService;
         }
 
         [AllowAnonymous]
@@ -27,8 +33,10 @@ namespace ContasAPagar.Controllers
 
             if(usuario != null)
             {
+                var usuarioBanco = usuarioService.GetUsuario(usuario.Email);
+                // colocar essa parte de baixo em uma outra classe
                 // colocar em um validador e comparar com as informações salvas no banco de dados
-                if (usuario.Email.Equals("aryane@teste.com") && usuario.Senha.Equals("123456"))
+                if (usuarioBanco != null && Criptografia.VerificarSenha(usuario.Senha, usuarioBanco.Senha))
                 {
                     var issuer = configuration["Jwt:Issuer"];
                     var audience = configuration["Jwt:Audience"];
@@ -44,7 +52,7 @@ namespace ContasAPagar.Controllers
                         new Claim(JwtRegisteredClaimNames.Email, usuario.Email)
                     });
 
-                    var expires = DateTime.UtcNow.AddMinutes(10);
+                    var expires = DateTime.UtcNow.AddHours(1);
 
                     var tokenDescriptor = new SecurityTokenDescriptor{
                         Subject = subject,

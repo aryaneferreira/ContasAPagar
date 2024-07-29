@@ -1,4 +1,5 @@
 ﻿using ContasAPagar.Dto;
+using ContasAPagar.Models;
 using ContasAPagar.Repositories;
 
 namespace ContasAPagar.Services
@@ -19,6 +20,11 @@ namespace ContasAPagar.Services
                 throw new ArgumentNullException(nameof(usuario));
 
             _usuarioRepository.PostUsuario(usuario);
+        }
+
+        public Usuario GetUsuario(string email)
+        {
+            return _usuarioRepository.GetUsuario(email);
         }
     }
 }
