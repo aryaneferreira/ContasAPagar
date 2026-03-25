@@ -1,9 +1,6 @@
-using System;
-
-namespace ContasAPagar.Models
+﻿namespace ContasAPagar.Dto
 {
-
-    public class TipoTransacao
+    public class TipoTransacaoOutputModel
     {
         public int TipoTransacaoId { get; set; }
         public string Nome { get; set; }

@@ -1,4 +1,4 @@
-﻿using ContasAPagar.DTOs;
+﻿using ContasAPagar.Dto;
 using ContasAPagar.Model;
 
 namespace ContasAPagar.Services
@@ -6,6 +6,6 @@ namespace ContasAPagar.Services
     public interface IWeatherForecastService
     {
         IEnumerable<WeatherForecast> GetWeatherForecasts();
-        void PostWeatherForecast(WeatherForecast weather);
+        void PostWeatherForecast(WeatherForecastInputModel weather);
     }
 }
