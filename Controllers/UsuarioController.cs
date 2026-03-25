@@ -19,9 +19,18 @@ namespace ContasAPagar.Controllers
         [AllowAnonymous]
         [HttpPost]
         [Route("criar")]
-        public void PostUsuario(UsuarioInputModel usuario)
+        public IActionResult PostUsuario(UsuarioInputModel usuario)
         {
-            _usuarioService.PostUsuario(usuario);
+            try
+            {
+                _usuarioService.PostUsuario(usuario);
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
     }
 }
